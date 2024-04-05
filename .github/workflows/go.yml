@@ -27,6 +27,6 @@ jobs:
         GOOS=linux GOARCH=amd64 go build -v -o build/linux/encdec
         GOOS=windows GOARCH=amd64 go build -v -o build/windows/encdec.exe
         GOOS=darwin GOARCH=amd64 go build -v -o build/macos/intel/encdec
-        GOOS=darwin GOARCH=ard64 go build -v -o build/macos/silicon/encdec
+        GOOS=darwin GOARCH=arm64 go build -v -o build/macos/silicon/encdec
 
 
