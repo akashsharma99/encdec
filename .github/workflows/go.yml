@@ -9,7 +9,7 @@ on:
 
 jobs:
 
-  build:
+  test-and-build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -18,9 +18,15 @@ jobs:
       uses: actions/setup-go@v5
       with:
         go-version: '1.22'
-
-    - name: Build
-      run: go build -v ./...
-
+    
     - name: Test
       run: go test -v ./...
+
+    - name: Build
+      run: |
+        GOOS=linux GOARCH=amd64 go build -v -o build/linux/encdec
+        GOOS=windows GOARCH=amd64 go build -v -o build/windows/encdec.exe
+        GOOS=darwin GOARCH=amd64 go build -v -o build/macos/intel/encdec
+        GOOS=darwin GOARCH=ard64 go build -v -o build/macos/silicon/encdec
+
+
