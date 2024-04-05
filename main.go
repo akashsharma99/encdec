@@ -7,18 +7,41 @@ import (
 	"os"
 )
 
+var UsageText = `
+Usage : 
+
+  encdec -[action-option] -[algo-option] [string-input]
+
+Where: 
+
+  -[action-option] is either -e or -d to encode or decode the string
+  -[algo-option] is the algorithm to use for encoding or decoding the string
+  [string-input] is the string to encode or decode
+
+Example:
+
+  encdec -e -algo base64 "hello world"
+  encdec -d -algo base64 "aGVsbG8gd29ybGQ="
+
+Supported Algorithms:
+
+  base64
+
+For help or suggestions, please open an issue at - https://github.com/akashsharma99/encdec
+`
+
 // cli tool to take a string and encode it to base64
 func main() {
 	// define options as flags
 	encode := flag.Bool("e", false, "Encode the string")
 	decode := flag.Bool("d", false, "Decode the string")
-	algo := flag.String("algo", "", "Use base64 algorithm")
+	algo := flag.String("algo", "", "specify an algorithm")
 	// parse the flags
 	flag.Parse()
 	inputString := flag.Arg(0)
 	if (!*encode && !*decode) || (*encode && *decode) || *algo == "" || inputString == "" {
-		fmt.Println("Usage to encode: base64 -e -algo base64 <string>")
-		fmt.Println("Usage to decode: base64 -d -algo base64 <string>")
+		fmt.Println("Invalid options")
+		fmt.Println(UsageText)
 		os.Exit(1)
 	}
 	// if encode is set then encode the string
