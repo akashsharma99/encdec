@@ -1,5 +1,5 @@
 # String Encoder and Decoder CLI
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/akashsharma99/encdec/go)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/akashsharma99/encdec/go.yml)
 
 This is a simple cli tool to encode and decode strings using base64 encoding. Will add support for more algorithms in the future.
 
